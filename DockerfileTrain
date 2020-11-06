@@ -1,0 +1,14 @@
+FROM tensorflow/tensorflow:latest-gpu-py3
+
+COPY Dataset/train/ Dataset/train/
+COPY Dataset/validation/ Dataset/validation/
+
+COPY Global.py Global.py
+COPY Models.py Models.py
+COPY MobileNetTrain.py MobileNetTrain.py
+
+RUN python3 -m pip install matplotlib
+RUN python3 -m pip install pillow
+
+# Execute the program
+CMD python3 MobileNetTrain.py > models/mobilenet_train_evo_raw.txt

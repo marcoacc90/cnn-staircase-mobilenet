@@ -1,0 +1,14 @@
+FROM tensorflow/tensorflow:latest-gpu-py3
+
+#Copy the file in the host machine to the container
+COPY Dataset/test/ Dataset/test/
+COPY Global.py Global.py
+COPY models/ models/
+COPY Models.py Models.py
+COPY MobileNetTest.py MobileNetTest.py
+
+RUN python3 -m pip install matplotlib
+RUN python3 -m pip install pillow
+
+# Execute the program
+CMD python3 MobileNetTest.py > models/mobilenet_500_test.txt
